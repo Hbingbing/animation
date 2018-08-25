@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Animation</title>
+    <style>
+        /* 例子1 */
+        
+        .example-box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            position: relative;
+        }
+        
+        .transform50 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            max-width: 100px;
+            max-height: 100px;
+            background: blue;
+            animation: transform50 2s ease infinite;
+        }
+        
+        @keyframes transform50 {
+            from {
+                transform: translate(40px, 40px) skewX(0deg) scale(1);
+            }
+            to {
+                transform: translate(40px, 40px) skewX(40deg) scale(.5);
+            }
+        }
+        /* 例子2 */
+        
+        .spin {
+            width: 142px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -72px;
+            margin-top: -101px;
+            border: 1px dashed orange;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            animation: spin 5s linear infinite;
+        }
+        /* 设置动画，以y轴旋转 */
+        
+        @keyframes spin {
+            0% {
+                transform: rotateY(0deg)
+            }
+            100% {
+                transform: rotateY(360deg)
+            }
+        }
+        
+        .rotate {
+            border: 5px solid hsla(50, 50%, 50%, .9);
+            transform: perspective(200px) rotateY(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>transform</h1>
+    <p>PS:一系列函数都是用“空格”分离</p>
+    <h4>2D transform-function:</h4>
+    <ol>
+        <li>translate()：用来移动元素，可以根据X轴和Ｙ轴坐标重新定位元素位置。在此基础上有两个扩展函数：translateX()和translateY()。</li>
+        <li>scale()：用来缩小或放大元素，可以使用元素尺寸发生变化。在此基础上有两个扩展函数：scaleX()和scaleY()。</li>
+        <li>rotate()：用来旋转元素。</li>
+        <li>skew()：用来让元素倾斜。在此基础上有两个扩展函数：skewX()和skewY()。</li>
+        <li>matrix()：定义矩阵变形，基于X轴和Y轴坐标重新定位元素位置。</li>
+    </ol>
+
+    <h4>3D transform-function:</h4>
+    <ol>
+        <li>translate3d()：移元素元素，用来指定一个3D变形移动位移量</li>
+        <li>translate()：指定3Ｄ位移在Ｚ轴的位移量。</li>
+        <li>scale3d()：用来缩放一个元素。</li>
+        <li>scaleZ():指定Z轴的缩放向量。</li>
+        <li>rotate3d()：指定元素具有一个三维旋转的角度。</li>
+        <li>rotateX()、rotateY()和rotateZ()：让元素具有一个旋转角度。</li>
+        <li>perspective()：指定一个透视投影矩阵。</li>
+        <li>matrix3d()：定义矩阵变形。</li>
+    </ol>
+
+    <h2>一、例子1：</h2>
+    <p>默认情况是以图形的中心为原点</p>
+    <div class="example-box">
+        <div class="transform50"></div>
+    </div>
+
+    <h2>二、transform-style: flat | perspective</h2>
+    <p>flat：2D平面动画。</p>
+    <p>perspective：3D立体动画。需要应用到变形元素的祖先元素上。</p>
+    <!-- 例子2 -->
+    <div class="example-box">
+        <div class="spin">
+            <div class="rotate">
+                <div style="height:100px;width:100%;background:blue;"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
